@@ -41,6 +41,7 @@ double result2 = number15 + number16;
 Console.WriteLine(result2);
 double number17 = 100;
 double result3 = result2 / number17;
+
 Console.WriteLine(result3);
 
 

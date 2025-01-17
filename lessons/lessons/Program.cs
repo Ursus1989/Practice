@@ -1,48 +1,79 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
-Console.WriteLine("Good Day!");
-Console.WriteLine("What is your name?");
-Console.WriteLine("\twhat's a wonderful day?\n");
-Console.WriteLine("agree!");
-int number = 1;
-Console.WriteLine(number);
-int number2 = 99;
-number2 = 100;
-Console.WriteLine(number2);
-int number3 = 0;
-number3 = 4;
-int number4 = 2;
-int sum = number3 + number4;
-Console.WriteLine(sum);
-int number5 = 0;
-int number6 = 2;
-int sum1 = number5 - number6;
-Console.WriteLine(sum1);
-int number7 = 100;
-int number8 = 1000;
-int sum2 = number7 * number8;
-Console.WriteLine(sum2);
-double number9 = 100;
-double number10 = 100;
-double result = number9 / number10;
-Console.WriteLine(result);
-double number11 = 1.5;
-Console.WriteLine(number11);
-double number12 = 99.9;
-number12 = 100;
-Console.WriteLine(number12);
-double number13 = 0.5;
-double number14 = 0.005;
-double result1 = number13 + number14;
-Console.WriteLine(result1);
-double number15 = -1;
-double number16 = 1;
-double result2 = number15 + number16;
-Console.WriteLine(result2);
-double number17 = 100;
-double result3 = result2 / number17;
+﻿
+Console.WriteLine("what is your name?");
+var Admin = "yes";
+if (Admin == "yes")
+{
+    Console.WriteLine("are you Admin?");
+}
 
-Console.WriteLine(result3);
+Console.WriteLine("Enter your gender (male or female):");
+var gender = Console.ReadLine();
+
+if (gender == "male")
+{
+    Console.WriteLine("are you married? (yes or no):");
+    var isMarried = Console.ReadLine();
+
+    if (isMarried == "yes")
+    {
+        Console.WriteLine("you are married.");
+    }
+    else if (isMarried == "no")
+    {
+        Console.WriteLine("yor are not married.");
+    }
+}
+else if (gender == "female")
+{
+    Console.WriteLine("are you married? (yes or no):");
+    var isMarried = Console.ReadLine();
+
+    if (isMarried == "yes")
+    {
+        Console.WriteLine("you are married.");
+    }
+    else if (isMarried == "no")
+    {
+        Console.WriteLine("you are not married.");
+    }
+}
+
+Console.WriteLine("How old are you?");
+var ageInput = Console.ReadLine();
+var age = Int32.Parse(ageInput);
+if (age < 18)
+{
+    Console.WriteLine("Access Denied");
+}
+else
+{
+    Console.WriteLine("Access Granted");
+}
+
+Console.WriteLine("where do you live?");
+var country = Console.ReadLine();
+if(country=="Russian Federation")
+{
+    Console.WriteLine("You live in Russian Federation");
+}
+else if (country == "China")
+{
+    Console.WriteLine("You live in China");
+}
+else if (country == "Turkey")
+{
+    Console.WriteLine("You live in Turkey");
+}
+else
+{
+    Console.WriteLine($"You live in country:{country}");
+}
+
+   
+
+
+
+
 
 
 

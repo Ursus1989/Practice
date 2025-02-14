@@ -1,102 +1,82 @@
-﻿using System.ComponentModel.Design;
-
-var firstName = GetUserName();
-static string GetUserName()
+﻿
+string message = CongratulateBoss();
+Console.WriteLine(message);
+static string CongratulateBoss()
 {
-    Console.WriteLine("What is your firstName?");
-    return Console.ReadLine();
-}
+    Console.WriteLine("How many subordinates do you have? ");
+    int count = int.Parse(Console.ReadLine());
 
-var lastName = GetUserlastName();
-static string GetUserlastName()
-{
-    Console.WriteLine("what is your lastName?");
-    return Console.ReadLine();
-}
-
-int age = GetUserAge();
-static int GetUserAge()
-{
-    Console.Write("How old are you? ");
-    int age;
-    while (!int.TryParse(Console.ReadLine(), out age) || age < 0)
+    if (count == 1)
     {
-        Console.Write("Invalid input. Please enter a valid age: ");
+        return "1 employee congratulates you on your anniversary.";
     }
-    return age;
-}
-
-var gender = GetUserGender();
-static string GetUserGender()
-{
-    Console.WriteLine("What is your gender? (Male/Female):");
-    return Console.ReadLine();
-}
-
-var isMarried = IsUserMarried();
-static bool IsUserMarried()
-{
-    Console.Write("Are you married? (Yes/No):");
-    var answer = Console.ReadLine().ToLower();
-    return answer == "Yes";
-}
-
-bool likesCoffee = LikesCoffee();
-Console.WriteLine("Likes Coffee:" + likesCoffee);
-static bool LikesCoffee()
-{
-    Console.WriteLine("Do you like Coffee? (Yes/No):");
-    string answer = Console.ReadLine();
-    if (answer == "Yes")
+    else if (count >= 2 && count <= 4)
     {
-        return true;
+        return count + " employees congratulate you on your anniversary.";
     }
     else
     {
-        return false;
+        return "All employees congratulate you on your anniversary.";
     }
 }
 
-string allergies = GetAllergies();
-Console.WriteLine("Allergie Information:" + allergies);
-static string GetAllergies()
+string birthDate = GetBirthDate();
+Console.WriteLine("Your birthdate is: " + birthDate);
+static string GetBirthDate()
 {
-    Console.WriteLine("Do you have allergies? (Yes/No):");
-    string answer = Console.ReadLine();
-    if (answer == "Yes")
+    Console.WriteLine("Please enter your birthdate (DD/MM/YYYY): ");
+    string birthDate = Console.ReadLine();
+
+    while (string.IsNullOrWhiteSpace(birthDate))
     {
-        Console.WriteLine("What are you allergic to?");
-        return Console.ReadLine();
+        Console.WriteLine("Birthdate cannot be empty. Please enter your birthdate: ");
+        birthDate = Console.ReadLine();
     }
-    return "No allergies";
+
+    return birthDate;
 }
 
-var marriage = GetMarriageCount();
-static int GetMarriageCount()
+
+
+int movieCount = GetFavoriteMovies();
+Console.WriteLine("Total movies entered: " + movieCount);
+static int GetFavoriteMovies()
 {
-    Console.Write("How many times have you been married? (0-100): ");
-    int count;
-    while (!int.TryParse(Console.ReadLine(), out count) || count < 0 || count > 100)
+    Console.WriteLine("How many favorite movies do you have? ");
+    int count = int.Parse(Console.ReadLine()); 
+
+    if (count <= 0)
     {
-        Console.Write("Invalid input. Please enter a number between 0 and 100: ");
+        Console.WriteLine("Invalid number. Exiting program.");
+        return 0; 
     }
-    return count;
+
+    int i = 1;
+    while (i <= count)
+    {
+        Console.WriteLine("Enter the name of movie " + i + ": ");
+        Console.ReadLine(); 
+        i = i + 1;
+    }
+
+    return count; 
 }
 
 
-string compliment = ComplimentUser();
-Console.WriteLine(compliment);
-static string ComplimentUser()
-{
-    Console.WriteLine("What is your name?");
-    string name = Console.ReadLine();
-    return "Dear" +  name  + ",you look beautiful as always today!";
-}
+    Console.WriteLine("Enter the cost of purchase 1: ");
+    double purchase1 = double.Parse(Console.ReadLine());
 
+    Console.WriteLine("Enter the cost of purchase 2: ");
+    double purchase2 = double.Parse(Console.ReadLine());
 
+    Console.WriteLine("Enter the cost of purchase 3: ");
+    double purchase3 = double.Parse(Console.ReadLine());
 
+    double total = SumPurchases(purchase1, purchase2, purchase3);
+    Console.WriteLine("The total cost is: " + total);
 
-
-
-
+    static double SumPurchases(double a, double b, double c)
+    {
+        return a + b + c;
+    }
 

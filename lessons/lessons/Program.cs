@@ -1,82 +1,73 @@
-﻿
-string message = CongratulateBoss();
-Console.WriteLine(message);
-static string CongratulateBoss()
-{
-    Console.WriteLine("How many subordinates do you have? ");
-    int count = int.Parse(Console.ReadLine());
+﻿using System.Net.Sockets;
 
-    if (count == 1)
-    {
-        return "1 employee congratulates you on your anniversary.";
-    }
-    else if (count >= 2 && count <= 4)
-    {
-        return count + " employees congratulate you on your anniversary.";
-    }
-    else
-    {
-        return "All employees congratulate you on your anniversary.";
-    }
-}
-
-string birthDate = GetBirthDate();
-Console.WriteLine("Your birthdate is: " + birthDate);
-static string GetBirthDate()
-{
-    Console.WriteLine("Please enter your birthdate (DD/MM/YYYY): ");
-    string birthDate = Console.ReadLine();
-
-    while (string.IsNullOrWhiteSpace(birthDate))
-    {
-        Console.WriteLine("Birthdate cannot be empty. Please enter your birthdate: ");
-        birthDate = Console.ReadLine();
-    }
-
-    return birthDate;
-}
+var tourist1 = new Tourist();
+tourist1.Name = "Roman";
+tourist1.Age = 35;
+tourist1.Destination="Russia";
+var info = tourist1.GetTouristInfo();
+Console.WriteLine(info);
+Console.ReadLine();
 
 
+var Jacket = new Outwear();
+Jacket.Name = "Polo";
+Jacket.Color = "black";
+Jacket.Size = "M";
+Jacket.Price = 79;
+var info1 = Jacket.GetOutwearInfo();
+Console.WriteLine(info1);
+Console.ReadLine();
+Jacket.SetPrice(100);
+Console.WriteLine("Clothing Information:");
+Jacket.DisplayFullInfo();
+Console.WriteLine();
+Console.ReadLine();
 
-int movieCount = GetFavoriteMovies();
-Console.WriteLine("Total movies entered: " + movieCount);
-static int GetFavoriteMovies()
-{
-    Console.WriteLine("How many favorite movies do you have? ");
-    int count = int.Parse(Console.ReadLine()); 
-
-    if (count <= 0)
-    {
-        Console.WriteLine("Invalid number. Exiting program.");
-        return 0; 
-    }
-
-    int i = 1;
-    while (i <= count)
-    {
-        Console.WriteLine("Enter the name of movie " + i + ": ");
-        Console.ReadLine(); 
-        i = i + 1;
-    }
-
-    return count; 
-}
+var Coat = new Outwear();
+Coat.Name = "CalvinKlein";
+Coat.Color = "white";
+Coat.Size = "S";
+Coat.Price = 99;
+var info2 = Coat.GetOutwearInfo();
+Console.WriteLine(info2);
+Console.ReadLine();
+Console.WriteLine("Clothing Information:");
+Coat.DisplayFullInfo();
+Console.WriteLine();
+Console.ReadLine();
 
 
-    Console.WriteLine("Enter the cost of purchase 1: ");
-    double purchase1 = double.Parse(Console.ReadLine());
+var Furcoat = new Outwear();
+Furcoat.Name = "Burberry";
+Furcoat.Color = "brown";
+Furcoat.Size = "L";
+Furcoat.Price = 1499;
+var info3 = Furcoat.GetOutwearInfo();
+Console.WriteLine(info3);
+Console.ReadLine();
+Console.WriteLine("Clothing Information:");
+Furcoat.DisplayFullInfo();
+Console.WriteLine();
+Console.ReadLine();
 
-    Console.WriteLine("Enter the cost of purchase 2: ");
-    double purchase2 = double.Parse(Console.ReadLine());
 
-    Console.WriteLine("Enter the cost of purchase 3: ");
-    double purchase3 = double.Parse(Console.ReadLine());
+var Student1 = new Student();
+Student1.Name = "Alex";
+Student1.Classnumber = "10B";
+Student1.Subject = "Geometry";
+var info4 = Student1.GetStudentInfo();
+Console.WriteLine(info4);
+Console.ReadLine();
+Student1.AskSubjectPreference();
+Console.ReadLine();
 
-    double total = SumPurchases(purchase1, purchase2, purchase3);
-    Console.WriteLine("The total cost is: " + total);
 
-    static double SumPurchases(double a, double b, double c)
-    {
-        return a + b + c;
-    }
-
+var Student2 = new Student();
+Student2.Name = "Peter";
+Student2.Classnumber = "9C";
+Student2.Subject = "Biology";
+var info5 = Student2.GetStudentInfo();
+Console.WriteLine(info5);
+Console.ReadLine();
+Student2.AskSubjectPreference();
+Console.ReadLine();

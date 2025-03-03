@@ -12,6 +12,8 @@ if (option == "1")
     string username = Console.ReadLine();
     Console.Write("Enter password: ");
     string password = Console.ReadLine();
+    var user1 = new User(username, password);
+    Console.WriteLine("User registered successfully");
 }
 else if (option == "2")
 {
@@ -21,6 +23,7 @@ else if (option == "2")
     Console.Write("Enter password: ");
     string password = Console.ReadLine();
 }
+
 
 
            

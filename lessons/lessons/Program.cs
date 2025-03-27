@@ -1,4 +1,6 @@
 ﻿var users = new List<User>();
+var productManager = new ProductManager();
+
 
 while (true)
 {
@@ -55,16 +57,50 @@ while (true)
                     Console.WriteLine("6. Log out");
 
                     var choice = Console.ReadLine();
-                    if (choice == "6")
+                    if (choice == "1")
+                    {
+                        while (true)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Product Menu");
+                            Console.WriteLine("1. Add product");
+                            Console.WriteLine("2. Show products");
+                            Console.WriteLine("3. Back");
+
+                            string productChoice = Console.ReadLine();
+
+                            if (productChoice == "1")
+                            {
+                                Console.Clear();
+                                var product = productManager.CreateProduct();
+                                productManager.AddProduct(product);
+                            }
+                            else if (productChoice == "2")
+                            {
+                                Console.Clear();
+                                productManager.ShowProducts();
+                            }
+                            else if (productChoice == "3")
+                            {
+                                break;
+                            }
+                        }
+                    }
+                    else if (choice == "6")
                     {
                         break;
+                    }
+                }
+                
                     }
                 }
             }
         }
         Console.WriteLine("User with this name and password does not exist");
-    }
-}
+    
+
+
+
 
 
 

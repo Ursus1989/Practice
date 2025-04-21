@@ -48,7 +48,6 @@ class MainMenuManager
                         Console.Clear();
                         productManager.DeleteProduct();
                     }
-
                     else if (productChoice == "4")
                     {
                         Console.Clear();
@@ -56,7 +55,7 @@ class MainMenuManager
                     }
                 }
             }
-            else if (choice == "6")
+            else if (choice == "6") 
             {
                 break;
             }

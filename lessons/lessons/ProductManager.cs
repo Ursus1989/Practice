@@ -61,88 +61,48 @@
             Console.ReadKey();
             return;
         }
-
         Console.WriteLine("Select a product to delete:");
-        for (int i = 0; i < products.Count; i++)
-        {
-            Console.WriteLine($"{i + 1}. {products[i].Name}");
-        }
-
-        string input = Console.ReadLine();
-        if (int.TryParse(input, out int choice) && choice > 0 && choice <= products.Count)
-        {
-            string deletedProductName = products[choice - 1].Name;
-            products.RemoveAt(choice - 1);
-            Console.WriteLine($"Product \"{deletedProductName}\" has been successfully deleted.");
-        }
+        int i = 1;
+        foreach (Product product in products)
+            Console.WriteLine(i++ + ". " + product.Name);
+        if (!int.TryParse(Console.ReadLine(), out int choice) || choice < 1 || choice > products.Count)
+            Console.WriteLine("Invalid selection. Press any key...");
         else
         {
-            Console.WriteLine("Invalid selection. Please enter a valid product number.");
+            string deletedProductName = products.ElementAt(choice - 1).Name;
+            products.RemoveAt(choice - 1);
+            Console.WriteLine("Product \"" + deletedProductName + "\" has been deleted.");
         }
-
         Console.WriteLine("Press any key to continue...");
         Console.ReadKey();
-
     }
     public void EditProduct()
     {
         if (products.Count == 0)
         {
-            Console.WriteLine("No products available to edit.");
-            Console.WriteLine("Press any key to continue...");
+            Console.WriteLine("No products to edit.");
             Console.ReadKey();
             return;
         }
-
-        Console.WriteLine("Select a product to edit:");
+        Console.WriteLine("Product list:");
         for (int i = 0; i < products.Count; i++)
+            Console.WriteLine((i + 1) + ". " + products.ElementAt(i).Name);
+        Console.Write("Select product number: ");
+        if (!int.TryParse(Console.ReadLine(), out int choice) || choice < 1 || choice > products.Count)
         {
-            Console.WriteLine($"{i + 1}. {products[i].Name}");
+            Console.WriteLine("Invalid selection.");
+            Console.ReadKey();
+            return;
         }
-
-        string input = Console.ReadLine();
-        if (int.TryParse(input, out int choice) && choice > 0 && choice <= products.Count)
-        {
-            var product = products[choice - 1];
-            Console.WriteLine($"Editing product: {product.Name}");
-            Console.WriteLine("Leave the field empty to keep the current value.");
-
-            Console.Write($"Enter new name (current: {product.Name}): ");
-            string newName = Console.ReadLine();
-            if (!string.IsNullOrWhiteSpace(newName))
-            {
-                product.Name = newName;
-            }
-
-            Console.Write($"Enter new description (current: {product.Description}): ");
-            string newDescription = Console.ReadLine();
-            if (!string.IsNullOrWhiteSpace(newDescription))
-            {
-                product.Description = newDescription;
-            }
-
-            Console.Write($"Enter new price (current: {product.Price}): ");
-            string newPriceInput = Console.ReadLine();
-            if (!string.IsNullOrWhiteSpace(newPriceInput))
-            {
-                if (decimal.TryParse(newPriceInput, out decimal newPrice) && newPrice > 0)
-                {
-                    product.Price = newPrice;
-                }
-                else
-                {
-                    Console.WriteLine("Invalid price entered. Keeping the original price.");
-                }
-            }
-
-            Console.WriteLine("Product updated successfully!");
-        }
-        else
-        {
-            Console.WriteLine("Invalid selection. Please enter a valid product number.");
-        }
-
-        Console.WriteLine("Press any key to continue...");
+        Product product = products.ElementAt(choice - 1);
+        Console.Write("New name: ");
+        product.Name = Console.ReadLine();
+        Console.Write("New description: ");
+        product.Description = Console.ReadLine();
+        Console.Write("New price: ");
+        if (decimal.TryParse(Console.ReadLine(), out decimal newPrice) && newPrice > 0)
+            product.Price = newPrice;
+        Console.WriteLine("Product updated successfully.");
         Console.ReadKey();
     }
 }
